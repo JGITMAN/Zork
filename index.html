@@ -13,13 +13,15 @@ main{max-width:980px;margin:0 auto;padding:32px max(16px,env(safe-area-inset-lef
 header{border:4px double var(--white);background:var(--blue);padding:22px 24px;text-align:center}
 h1{color:var(--yellow);font-size:clamp(1.6rem,4.5vw,2.6rem);margin:0 0 6px;letter-spacing:2px}
 header p{margin:0;color:var(--cyan)}
-.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:26px}
-.game{border:3px double var(--white);background:var(--blue);padding:18px 18px 16px}
+.games{display:flex;flex-direction:column;gap:18px;margin-top:26px}
+.game{border:3px double var(--white);background:var(--blue);padding:18px 20px;display:grid;grid-template-columns:minmax(0,1fr) 200px;grid-template-areas:'title play' 'links links';gap:12px 24px;align-items:center}
+.game .head{grid-area:title;min-width:0}.game .play{grid-area:play}.game ul{grid-area:links}
+@media (max-width:560px){.game{grid-template-columns:1fr;grid-template-areas:'title' 'play' 'links'}}
 .game h2{color:var(--yellow);margin:0;font-size:1.35rem}
-.game .sub{color:var(--cyan);margin:4px 0 14px}
-.play{display:block;text-align:center;background:var(--cyan);color:var(--deep);font-weight:bold;text-decoration:none;padding:10px;margin-bottom:12px;font-size:1.1rem}
+.game .sub{color:var(--cyan);margin:4px 0 0}
+.play{display:block;text-align:center;background:var(--cyan);color:var(--deep);font-weight:bold;text-decoration:none;padding:12px;font-size:1.15rem}
 .play:hover,.play:focus-visible{background:var(--yellow);outline:none}
-.game ul{list-style:none;margin:0;padding:0;line-height:1.75}
+.game ul{list-style:none;margin:0;padding:10px 0 0;border-top:1px solid #5555ff;display:flex;flex-wrap:wrap;gap:6px 28px;line-height:1.6}
 .game li a{color:var(--white)}
 .game li a:hover,.game li a:focus-visible{color:var(--yellow)}
 .spoil{color:var(--grey);font-size:.85em}
@@ -40,7 +42,7 @@ footer a{color:var(--cyan)}
 
 <section class="games">
   <article class="game">
-    <h2>ZORK I</h2><p class="sub">The Great Underground Empire</p>
+    <div class="head"><h2>ZORK I</h2><p class="sub">The Great Underground Empire</p></div>
     <a class="play" href="zork-i/zork-i-game.html">&gt; PLAY</a>
     <ul>
       <li><a href="zork-i/zork-i-manual.html">Manual</a></li>
@@ -50,7 +52,7 @@ footer a{color:var(--cyan)}
     </ul>
   </article>
   <article class="game">
-    <h2>ZORK II</h2><p class="sub">The Wizard of Frobozz</p>
+    <div class="head"><h2>ZORK II</h2><p class="sub">The Wizard of Frobozz</p></div>
     <a class="play" href="zork-ii/zork-ii-game.html">&gt; PLAY</a>
     <ul>
       <li><a href="zork-ii/zork-ii-manual.html">Manual</a></li>
@@ -60,7 +62,7 @@ footer a{color:var(--cyan)}
     </ul>
   </article>
   <article class="game">
-    <h2>ZORK III</h2><p class="sub">The Dungeon Master</p>
+    <div class="head"><h2>ZORK III</h2><p class="sub">The Dungeon Master</p></div>
     <a class="play" href="zork-iii/zork-iii-game.html">&gt; PLAY</a>
     <ul>
       <li><a href="zork-iii/zork-iii-manual.html">Manual</a></li>

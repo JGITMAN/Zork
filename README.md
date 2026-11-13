@@ -6,7 +6,7 @@ Each game is a single HTML file. Open it in any modern browser and play, with no
 
 ![Zork I in the browser](screenshots/zork1-playing.png)
 
-**[Play online](https://jgitman.github.io/Zork/)** · [Zork I](zork-i/zork-i-game.html) · [Zork II](zork-ii/zork-ii-game.html) · [Zork III](zork-iii/zork-iii-game.html)
+**[Play online](https://jgitman.github.io/Zork/)** · [Play Zork I](https://jgitman.github.io/Zork/zork-i/zork-i-game.html) · [Play Zork II](https://jgitman.github.io/Zork/zork-ii/zork-ii-game.html) · [Play Zork III](https://jgitman.github.io/Zork/zork-iii/zork-iii-game.html)
 
 ---
 
