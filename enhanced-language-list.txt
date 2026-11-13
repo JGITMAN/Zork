@@ -1,0 +1,55 @@
+ZORK: THINGS YOU CAN SAY IN PLAIN ENGLISH
+(Zork I, II and III. Make sure "Enhanced language" is on in Settings, F2, item 8.
+Hints start switched off, so nothing is given away; turn them on in Settings (item 5) if you want help.
+Zork always gets the first try; this only helps when Zork wouldn't understand you.
+The full list of everything it understands is at the end of each game's manual.)
+
+FINDING YOUR WAY   (these need Map turned on in Settings)
+- which way can i go          (shows every exit and where it leads)
+- go back                     (back to the room you just came from)
+- go to the kitchen           (walks you to any place you've been, one real move at a time)
+- go to the lamp              (walks you to where you last saw it)
+- how do i get to the kitchen (tells you the way, so you can walk it yourself)
+- where have i been
+Zork uses compass directions: NORTH, SOUTH, EAST, WEST, NORTHEAST and so on,
+plus UP, DOWN, IN and OUT. There is no left or right.
+In a maze, drop something in each room so you can tell them apart.
+
+FINDING THINGS   (these need Map turned on in Settings)
+- where is the sword          (where you last saw it, and how long ago)
+- what did i drop
+- where are my treasures      (Zork I only)
+
+ABOUT YOU AND THIS ROOM
+- where am i
+- is there anything here
+- search the room             (looks around and names everything you can see)
+- what am i carrying
+- am i hurt
+- what is my score
+- who am i
+- is it dark here
+
+DOING THINGS
+- grab the lamp, pick it up, put it down, switch it on
+- look at the sword, check the box, peek inside the bag
+- take everything, drop everything
+- take the lamp and go north   (do several things at once with AND or THEN)
+- examine the brass thing      (describe something instead of naming it)
+- do it again
+
+TALKING TO CHARACTERS
+- talk to the troll, say hello to the robot, greet the old man
+- ask the robot to go east     (Zork's own way is: ROBOT, GO EAST)
+
+WHEN YOU'RE STUCK   (these need Hints turned on in Settings)
+- what can i do here           (some ideas for this room)
+- give me a hint               (hints for places you've been, one small step at a time)
+Puzzle questions ("how do I get past the troll?") are never answered;
+they point you to HINT, so the game isn't spoiled.
+
+GOOD TO KNOW
+- how do i play opens the Help screen (or press F1).
+- Typos are fixed for you, and it tells you what it changed: "tkae the lmap" works.
+- Please, now, for me, can you and question marks are fine: "can you open the door please?"
+- UNDO takes back your last move. A whole GO TO walk counts as one move for UNDO.
