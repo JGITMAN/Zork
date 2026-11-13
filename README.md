@@ -6,7 +6,7 @@ Each game is a single HTML file. Open it in any modern browser and play, with no
 
 ![Zork I in the browser](screenshots/zork1-playing.png)
 
-**[Play online](https://jgitman.github.io/Zork/)** · [Play Zork I](https://jgitman.github.io/Zork/zork-i/zork-i-game.html) · [Play Zork II](https://jgitman.github.io/Zork/zork-ii/zork-ii-game.html) · [Play Zork III](https://jgitman.github.io/Zork/zork-iii/zork-iii-game.html)
+**[Play Zork I](https://jgitman.github.io/Zork/zork-i/zork-i-game.html)** · **[Play Zork II](https://jgitman.github.io/Zork/zork-ii/zork-ii-game.html)** · **[Play Zork III](https://jgitman.github.io/Zork/zork-iii/zork-iii-game.html)**
 
 ---
 
@@ -21,7 +21,7 @@ Each game is a single HTML file. Open it in any modern browser and play, with no
 
 ## Playing
 
-**Online:** open the [game page](https://jgitman.github.io/Zork/) and pick a game.
+**Online:** [Play Zork I](https://jgitman.github.io/Zork/zork-i/zork-i-game.html), [Play Zork II](https://jgitman.github.io/Zork/zork-ii/zork-ii-game.html) or [Play Zork III](https://jgitman.github.io/Zork/zork-iii/zork-iii-game.html).
 
 **On your own computer:** download this repository (the green **Code** button, then **Download ZIP**), unzip it, and double-click a game file such as `zork-i/zork-i-game.html`. It runs in your browser, works offline, and remembers your place between visits.
 
