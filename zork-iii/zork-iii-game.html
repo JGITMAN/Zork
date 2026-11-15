@@ -653,7 +653,7 @@ function submit(raw,fromButton){
   say('','gap');let anchor=LOG.length;say('>'+line.toLowerCase(),'cmd');if(note)say(note,'hint');
   const mFrom=vm.getGlobal(0),memBefore=memHeld();vm.input(sent);
   try{vm.run();}catch(e){OUT+='\n[The game stopped: '+e.message+']';}
-  const before=LOG.length,prevOut=lastOut;takeOutput();if(LOG.length<before)anchor=0;
+  const before=LOG.length,prevOut=lastOut;takeOutput();const freshStart=LOG.length<before;if(freshStart)anchor=0;
   // A command that changed nothing in the game (SCORE, VERSION, a word it didn't know...) isn't a move,
   // so it doesn't use up an UNDO step: UNDO always takes back your last real move.
   // (The game's own move counter tells: it only goes up when a command really took a turn.)
@@ -669,7 +669,8 @@ function submit(raw,fromButton){
   try{memSee(jumped?null:memBefore);}catch(e){}
   if(after)try{for(const l of after())say(l,'hint');}catch(e){}
   scriptNotes();
-  echoInstant=!fromButton;afterChange(anchor,true);startCmdTyping(anchor);echoInstant=false;
+  // a restart puts the opening text on screen at once, the same as a new game
+  if(freshStart)afterChange(0,false);else{echoInstant=!fromButton;afterChange(anchor,true);startCmdTyping(anchor);echoInstant=false;}
   if(SCRIPTPEND){const T=SCRIPTPEND;SCRIPTPEND=null;scriptAskSave(T);}}
 function run(a){if(a.sys){a.fn();return;}submit(a.cmd,true);}
 // Keep the last LOGMAX lines of story, the same amount the autosave keeps; the oldest go first.
@@ -700,7 +701,7 @@ function ownRestartAsk(typedByHand){typed=total;say('','gap');const a=LOG.length
 // must not be taken as that answer.
 function awaitingChoice(){return /\(Y is affirmative\):?$/.test(lastOut)||/RESTART, RESTORE, or QUIT/i.test(lastOut);}
 function showScore(){if(vm.halted){return;}if(awaitingChoice()){typed=total;return;}run({cmd:'score'});}
-function newGame(){LOG=[];UNDO=[];bootVM();OUT='';vm.run();takeOutput();typed=0;afterChange(0,true);}
+function newGame(){LOG=[];UNDO=[];bootVM();OUT='';vm.run();takeOutput();afterChange(0,false);}
 // typed by hand: the command is already on screen, so it isn't typed out again (F1 still types it)
 // F5 / ABOUT: the game's own title and release lines (asked of a copy of the game, so nothing changes), then the credits
 const ABOUT_HEAD=['Caldwell Z-Machine for Browsers Edition','Copyright \u00A9 2026 Jason Caldwell [zork.czm@fastmail.com]','MIT License: free to use, copy, modify and distribute.'];
@@ -1715,14 +1716,14 @@ function togglePlain(){PLAIN=!PLAIN;try{localStorage.setItem('zork3-original-pla
 function toggleScreen(){BLACK=!BLACK;try{localStorage.setItem('zork3-original-screen',BLACK?'black':'blue');}catch(e){}applyScreen();}
 const HINT=()=>'Type a command at the prompt and press Enter'+(showBtns()?', or click a button':'')+'. Press F1 for help.';
 function addHint(){const t=Math.max(0,LOG.findIndex(e=>e.k==='title'));const i=LOG.findIndex((e,j)=>j>t&&e.k==='gap');if(i>=0)LOG.splice(i,0,{k:'gap',s:''},{k:'hint',s:HINT()});}
-const newGame0=newGame;newGame=function(){const T=SCRIPT&&SCRIPT.on?scriptFinish():null;if(T)setTimeout(()=>scriptAskSave(T),0);LOG=[];UNDO=[];mapFresh();bootVM();OUT='';vm.run();takeOutput();try{mapSee(vm.getGlobal(0),true);mapJust=false;memSee(null);}catch(e){}addHint();typed=0;afterChange(0,true);};
+const newGame0=newGame;newGame=function(){const T=SCRIPT&&SCRIPT.on?scriptFinish():null;if(T)setTimeout(()=>scriptAskSave(T),0);LOG=[];UNDO=[];mapFresh();bootVM();OUT='';vm.run();takeOutput();try{mapSee(vm.getGlobal(0),true);mapJust=false;memSee(null);}catch(e){}addHint();afterChange(0,false);};
 function start(){
   let restored=false;bootVM();
   try{const s=JSON.parse(localStorage.getItem(SAVEKEY)||'null');
     if(s&&s.vm&&Array.isArray(s.LOG)&&s.LOG.length){vm.load(unpack(s.vm));LOG=s.LOG;lastOut=s.lastOut||'';if(s.map&&s.map.r){MAP=s.map;mapJust=false;}PREV=s.prev||null;PREVDIR=s.pdir||null;restored=true;loadUndo();}}catch(e){restored=false;bootVM();}
   if(!restored){mapReset();vm.run();takeOutput();addHint();}
   try{mapSee(vm.getGlobal(0),true);mapJust=false;memSee(null);}catch(e){}
-  fit(true);rewrap();typed=restored?total:0;afterChange(restored?Math.max(0,lastCmd()):0,!restored);
+  fit(true);rewrap();afterChange(restored?Math.max(0,lastCmd()):0,false);   // the opening text is on screen at once
   // a transcript only carries on with the game it belongs to; the game's own flag follows it
   if(!restored&&SCRIPT){SCRIPT=null;scriptStore();}scriptSetFlag(!!(SCRIPT&&SCRIPT.on));
   
